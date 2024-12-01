@@ -31,39 +31,62 @@ a a a a a b e g h l m m p t
 ```
 * 2-misol
 ``` Cs
-using System; using System.Linq; class Item { 
+using System;
+using System.Linq;
+ class Item
+ { 
     public string Name { get; set; } 
-    public int ItemNumber { get; set; }     public Item(string n, int inum) 
+    public int ItemNumber { get; set; }
+    public Item(string n, int inum) 
     { 
         Name = n; 
         ItemNumber = inum; 
-    } } 
-class InStockStatus { 
-    public int ItemNumber { get; set; }     public bool InStock { get; set; }     public InStockStatus(int n, bool b) 
+    }
+  } 
+class InStockStatus
+ { 
+    public int ItemNumber { get; set; }
+   public bool InStock { get; set; }
+    public InStockStatus(int n, bool b) 
     { 
         ItemNumber = n; 
         InStock = b; 
-    } } class Temp { 
-    public string Name { get; set; }     public bool InStock { get; set; }     public Temp(string n, bool b) 
+    }
+} class Temp
+ { 
+    public string Name { get; set; }
+    public bool InStock { get; set; }
+    public Temp(string n, bool b) 
     { 
         Name = n; 
         InStock = b; 
-    } } 
+    }
+} 
 class JoinDemo 
 { 
     static void Main() 
     { 
         Item[] items = { 
-                    new Item("Qaychi", 1424),                     new Item("Pichoq", 7892),                     new Item("Bolg'a", 8534),                     new Item("Qoshiq", 6411) 
+                    new Item("Qaychi", 1424),
+                    new Item("Pichoq", 7892),
+                    new Item("Bolg'a", 8534),
+                    new Item("Qoshiq", 6411) 
                     }; 
-        InStockStatus[] statusList = {                     new InStockStatus(1424, true),                     new InStockStatus(7892, false),                     new InStockStatus(8534, true),                     new InStockStatus(6411, true) 
-                }; 
-        var inStockList = from item in items                           join entry in statusList 
-                          on item.ItemNumber equals entry.ItemNumber                           select new Temp(item.Name, entry.InStock); 
+        InStockStatus[] statusList = {
+                    new InStockStatus(1424, true),
+                   new InStockStatus(7892, false),
+                  new InStockStatus(8534, true),
+                  new InStockStatus(6411, true) 
+                     }; 
+        var inStockList = from item in items
+                         join entry in statusList 
+                          on item.ItemNumber equals entry.ItemNumber
+                     select new Temp(item.Name, entry.InStock); 
         Console.WriteLine("Tovar \t Mavjudligi\n"); 
          
         foreach (Temp t in inStockList) 
-            Console.WriteLine("{0}\t{1}", t.Name, t.InStock);     } 
+            Console.WriteLine("{0}\t{1}", t.Name, t.InStock);
+  } 
 } 
 ```
 Natija:
